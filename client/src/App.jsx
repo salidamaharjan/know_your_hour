@@ -4,9 +4,7 @@ import Card from "./components/card.jsx";
 function App() {
   return (
     <div className="flex justify-center pt-20">
-    <div className="font-bold text-green-700">
-      <Card title="Know Your Hour"></Card>
-    </div>
+      <Card  className="text-green-600" title="Know Your Hour"></Card>
     </div>
   );
 }
