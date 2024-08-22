@@ -1,11 +1,7 @@
-import './App.css'
+import "./App.css";
 
 function App() {
-  return (
-    <>
-      Know Your Hour
-    </>
-  )
+  return <>Know Your Hour</>;
 }
 
-export default App
+export default App;
