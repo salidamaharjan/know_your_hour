@@ -19,4 +19,5 @@ export function authMiddleware({req}){
     catch{
         console.log("Invalid token");
     }
+    return req;
 }
