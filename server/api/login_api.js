@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/index";
+import User from "../models/index.js";
 import express from "express";
 const router = express.Router();
 

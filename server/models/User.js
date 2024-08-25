@@ -39,4 +39,4 @@ User.init(
     }
 );
 
-export { User};
+export default User;
