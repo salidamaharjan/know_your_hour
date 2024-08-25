@@ -32,3 +32,5 @@ User.init(
         modelName: "user",
     }
 );
+
+export { User};
