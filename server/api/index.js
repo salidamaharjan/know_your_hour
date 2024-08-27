@@ -1,3 +1,3 @@
 import loginRoute from "./login_api.js";
-
-export {loginRoute};
+import signupRoute from "./signUp_api.js";
+export {loginRoute, signupRoute};
