@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 dotenv.config();
 
-export function authMiddleware({req}){
+function authMiddleware({req}){
     let token = req.headers.authorization;
     if (req.headers.authorization){
         token = token.split(" ").pop().trim();
@@ -21,3 +21,5 @@ export function authMiddleware({req}){
     }
     return req;
 }
+
+export default authMiddleware;
