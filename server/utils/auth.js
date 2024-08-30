@@ -2,24 +2,22 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 dotenv.config();
 
-function authMiddleware({req}){
-    let token = req.headers.authorization;
-    if (req.headers.authorization){
-        token = token.split(" ").pop().trim();
+const authMiddleware = (req, res, next) => {
+    const authorizationHeader = req.header("Authorization");
+    if (!authorizationHeader || !authorizationHeader.startsWith("Bearer ")) {
+        return res.status(401).json({success: false, message: "Invalid authorization header"});
     }
-    if (!token){
-        return req;
+    const token = authorizationHeader.replace("Bearer ", "");
+    if (!token) {
+        return  res.status(401).json({success: false, message: "Authorization token not found"});
     }
     try{
-        const data = jwt.verify(token, process.env.SECRET_KEY, {
-            maxAge: 60 * 60 * 2,
-        });
-        req.userInfo = data.userInfo;
+        req.user = jwt.verify(token, process.env.SECRET_KEY);
+        next();
+    } catch (err) {
+        console.error(err);
+        return res.status(401).json({success : false, message: "Invalid token"});
     }
-    catch{
-        console.log("Invalid token");
-    }
-    return req;
 }
 
 export default authMiddleware;

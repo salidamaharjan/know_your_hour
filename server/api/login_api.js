@@ -9,21 +9,26 @@ const router = express.Router();
 router.post("/login", async (req, res) => {
     try {
         const {username, password} = req.body;
+        console.log("line 12", {username, password});
         const user = await User.findOne({
             where: {
                 username,
             }
         });
+        console.log("Username found -- " + !!user);
         if (!user) {
             res.status(200).json({message: "User not found"});
             return;
         }
+        console.log("user.password == " + user.password)
 
         const checkPasswordIsValid = await bcrypt.compare(password, user.password);
+        console.log("checkPasswordIsValid",checkPasswordIsValid);
         if (!checkPasswordIsValid){
             res.status(400).json({message: "Incorrect username and password combination"});
+            return;
         }
-        const token = jwt.sign({id: user.id}, prcess.env.SECRET_KEY, {
+        const token = jwt.sign({id: user.id}, process.env.SECRET_KEY, {
             expiresIn: process.env.JWT_EXPIRATION,
         });
 
