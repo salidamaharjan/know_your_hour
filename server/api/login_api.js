@@ -6,10 +6,11 @@ import User from "../models/index.js";
 import express from "express";
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const {username, password} = req.body;
         console.log("line 12", {username, password});
+
         const user = await User.findOne({
             where: {
                 username,
