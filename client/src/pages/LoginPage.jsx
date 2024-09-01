@@ -15,11 +15,10 @@ function LoginPage() {
             username,
             password
         });
-        const token = data.token;
+        const token = data.accessToken;
         if (token) {
             localStorage.setItem("token", token);
-            navigate("/home");
-            window.location.reload();
+            navigate("/homepage");
         }
         setUsername("");
         setPassword("");
