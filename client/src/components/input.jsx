@@ -1,4 +1,4 @@
-function Input({id, placeholder, type, className}) {
-    return <input id={id} type={type} placeholder={placeholder} className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${className}`}></input>
+function Input({id, placeholder, value, type, onChange, className}) {
+    return <input id={id} type={type} value={value} onChange={onChange} placeholder={placeholder} className={className}></input>
 }
 export default Input;
